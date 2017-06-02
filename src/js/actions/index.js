@@ -20,17 +20,19 @@ export const VisibilityFilters = {
 /*
  * action 创建函数
  */
+let index = 0;
 export const addTodo = (text)=>{
 	return {
 		type:ADD_TODO,
-		text
+		text,
+		id : index++
 	}
 }
 
-export const toggleTodo = (index) => {
+export const toggleTodo = (id) => {
 	return {
 		type:TOGGLE_TODO,
-		index
+		id
 	}
 }
 

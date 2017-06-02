@@ -31,10 +31,10 @@ function reducer(state = {}, action) {
 function todos(state=[],action){
 	const actionType = action.type;
 	if (ADD_TODO == actionType) {
-		return [...state,{text:action.text,completed:false}];
+		return [...state,{text:action.text,completed:false,id:action.id}];
 	} else if (TOGGLE_TODO == actionType){
-		return state.map((todo,index)=>{
-			if (index === action.index) {
+		return state.map((todo)=>{
+			if (todo.id === action.id) {
 				return Object.assign({},todo,{completed:!!!todo.completed});
 			}else{
 				return todo;
