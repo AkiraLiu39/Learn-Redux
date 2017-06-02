@@ -1,5 +1,6 @@
-import {connect} from 'react-redux'
-import {addTodo} from '../action'
+import {connect} from 'react-redux';
+import {addTodo} from '../actions';
+import React from 'react';
 let AddTodo = ({dispatch}) => {
 	let input;
 	return (
@@ -12,7 +13,7 @@ let AddTodo = ({dispatch}) => {
 			}}>
 
 				<input ref={node=>{input=node}}
-				<button  type='submit' >addTodo</button>
+				<button type='submit' >addTodo</button>
 			</form>
 		</div>
 	);
