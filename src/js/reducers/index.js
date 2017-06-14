@@ -1,9 +1,16 @@
-import {VisibilityFilters,SET_VISIBILITY_FILTER,ADD_TODO,TOGGLE_TODO} from '../actions';
 import {combineReducers} from 'redux';
+import todos from './todos';
 
-const {SHOW_ALL} = VisibilityFilters;
+const rootReducer = combineReducers({todos});
+export default rootReducer;
 
-const todoApp = combineReducers({visibilityFilter,todos})
+
+
+
+
+// import {VisibilityFilters,SET_VISIBILITY_FILTER,ADD_TODO,TOGGLE_TODO} from '../actions';
+// const {SHOW_ALL} = VisibilityFilters;
+// const todoApp = combineReducers({visibilityFilter,todos})
 /* 注意上面的写法和下面完全等价：
 function todoApp (state = {},action){
 
@@ -27,7 +34,7 @@ function reducer(state = {}, action) {
   }
 }
 */
-
+/* old 
 function todos(state=[],action){
 	const actionType = action.type;
 	if (ADD_TODO == actionType) {
@@ -53,3 +60,4 @@ function visibilityFilter(state = SHOW_ALL,action){
 }
 
 export default todoApp;
+*/
