@@ -43,3 +43,7 @@ export default class TodoTextInput extends Component{
 		);
 	}
 }
+
+TodoTextInput.propTypes = {
+	// onSave:propTypes.func
+};
