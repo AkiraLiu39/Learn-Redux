@@ -3,17 +3,18 @@ import {render} from 'react-dom'
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import todoApp from './reducers';
-import App from './components/App';
+// import App from './components/App';
+import App from './containers/App';
 // import {addTodo,toggleTodo,setVisibility,VisibilityFilters} from './actions'
-
+import '../css/todoMVC.css'
 let store = createStore(todoApp);
 // 打印初始状态
 // console.log(store.getState())
 // 每次 state 更新时，打印日志
 // 注意 subscribe() 返回一个函数用来注销监听器
-// let unsubscribe = store.subscribe(() =>
-//   console.log(store.getState())
-// )
+let unsubscribe = store.subscribe(() =>
+  console.log(store.getState())
+)
 
 // 发起一系列 action
 // store.dispatch(addTodo('Learn about actions'));

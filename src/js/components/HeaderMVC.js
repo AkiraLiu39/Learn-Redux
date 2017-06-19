@@ -1,9 +1,14 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import TodoTextInput from './TodoTextInput';
+import TodoTextInput from './TextTodoInputMVC';
 
-export default class Header extends Componenet{
-	handleSave = text => {
+export default class Header extends Component{
+	constructor(props){
+		super(props);
+		this.handleSave = this.handleSave.bind(this);
+	}
+	handleSave(text){
+		index.css
 		if (text.length !== 0) {
 			this.props.addTodo(text)			
 		};

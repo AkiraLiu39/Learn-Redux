@@ -1,4 +1,4 @@
-import {ADD_TODO,DELETE_TODO,EDIT_TODO,COMPLETE_TODO,COMPLETE_ALL,CLEAR_COMPLETED} from '../actions/ActionTypes'
+import {ADD_TODO,DELETE_TODO,EDIT_TODO,COMPLETE_TODO,COMPLETE_ALL,CLEAR_COMPLETED} from '../constants/ActionTypes'
 const initialState = [
 	{
 		text:'init',
@@ -9,8 +9,9 @@ const initialState = [
 
 export default function todos(state = initialState,action){
 	const acionType = action.type;
+	console.log('action',action,'state',state);
 	if (ADD_TODO == acionType) {
-		return [
+		let result = [
 			{
 				id:state.reduce((maxId,todo)=> Math.max(todo.id,maxId),-1) + 1,
 				completed :false,
@@ -18,13 +19,14 @@ export default function todos(state = initialState,action){
 			},
 			...state
 		];
+		return result;
 	} else if (DELETE_TODO == acionType){
 		return state.filter(todo=>todo.id !== id);
 
 	} else if (COMPLETE_TODO == acionType) {
-		return state.map(todo => todo.id === action.id ? {...todo,completed:!todo.completed} : todo);
+		return state.map(todo => todo.id === action.id ? Object.assign(todo,{completed:!todo.completed}) : todo);
 	} else if (EDIT_TODO == acionType) {
-		return state.map(todo => todo.id === action.id ? {...todo,text:action.text} : todo );
+		return state.map(todo => todo.id === action.id ? Object.assign(todo,{text:action.text}) : todo );
 
 	} else if (CLEAR_COMPLETED == acionType){
 		return state.filter(todo => !todo.completed);

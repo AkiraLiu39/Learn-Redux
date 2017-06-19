@@ -1,14 +1,17 @@
-import React,{component} from 'react';
+import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import classname from 'classnames';
+import classnames from 'classnames';
 
 export default class TodoTextInput extends Component{
 	constructor(props){
 		super(props);
-		this.state = {this.props.text || ''};
+		
+		this.state = {text:this.props.text || ''};
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+		this.handleBlur = this.handleBlur.bind(this);
 	}
-
-	handleSubmit = e => {
+	handleSubmit(e) {
 		if (e.which == 13) {
 			const text = e.target.value.trim();	
 			this.props.onSave(text);
@@ -18,11 +21,12 @@ export default class TodoTextInput extends Component{
 		};
 	}
 
-	handleChange = e => {
+	handleChange(e){
+		
 		this.setState({text:e.target.value});
 	}
 
-	handleBlur = e => {
+	handleBlur(e){
 		if(!this.props.newTodo){
 			this.props.onSave(text:e.target.value);
 		}
@@ -30,7 +34,7 @@ export default class TodoTextInput extends Component{
 
 	render() {
 		return (
-			<input classname = {
+			<input className = {
 				classnames({edit:this.props.editing,
 							'new-todo':this.props.newTodo})}
 				type = 'text' 
@@ -44,6 +48,10 @@ export default class TodoTextInput extends Component{
 	}
 }
 
-TodoTextInput.propTypes = {
-	// onSave:propTypes.func
+TodoTextInput.PropTypes = {
+	onSave:PropTypes.func.isRequired,
+	text:PropTypes.string,
+	placeholder:PropTypes.string,
+	editing:PropTypes.bool,
+	newTodo:PropTypes.bool
 };
