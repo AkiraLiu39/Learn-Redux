@@ -8,7 +8,7 @@ export default class Header extends Component{
 		this.handleSave = this.handleSave.bind(this);
 	}
 	handleSave(text){
-		index.css
+		
 		if (text.length !== 0) {
 			this.props.addTodo(text)			
 		};
@@ -19,7 +19,7 @@ export default class Header extends Component{
 				<h1>todos</h1>
 				<TodoTextInput 	newTodo 
 								onSave = {this.handleSave}
-								placeHolder="What needs to be done?" />
+								placeholder="What needs to be done?" />
 			</header>
 		);
 	}

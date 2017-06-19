@@ -44,6 +44,8 @@ export default class MainSection extends Component {
 		const { todos} = this.props;
 		const {filter} = this.state;
 		const activeCount = todos.length - completedCount;
+		
+
 		if (todos.length) {
 			return (
 				<Footer completedCount={completedCount}
@@ -59,8 +61,8 @@ export default class MainSection extends Component {
 		const {todos,actions} = this.props;
 		const {filter} = this.state;
 		const filteredTodos = todos.filter(TODO_FILTERS[filter]);
-		const completedCount = todos.reduce((count,todo)=>todos.completed ? count + 1 : count,0);
-
+		const completedCount = todos.reduce((count,todo)=>todo.completed ? count + 1 : count,0);
+		
 		return (
 			<section className = 'main'>
 				{this.renderToggleAll(completedCount)}

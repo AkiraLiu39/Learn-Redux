@@ -28,7 +28,7 @@ export default class TodoTextInput extends Component{
 
 	handleBlur(e){
 		if(!this.props.newTodo){
-			this.props.onSave(text:e.target.value);
+			this.props.onSave(e.target.value);
 		}
 	}
 

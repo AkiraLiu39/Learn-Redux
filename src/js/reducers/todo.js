@@ -21,7 +21,7 @@ export default function todos(state = initialState,action){
 		];
 		return result;
 	} else if (DELETE_TODO == acionType){
-		return state.filter(todo=>todo.id !== id);
+		return state.filter(todo=>todo.id !== action.id);
 
 	} else if (COMPLETE_TODO == acionType) {
 		return state.map(todo => todo.id === action.id ? Object.assign(todo,{completed:!todo.completed}) : todo);

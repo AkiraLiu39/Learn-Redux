@@ -10,13 +10,19 @@ const FILTER_TITLES = {
 };
 
 export default class Footer extends Component {
-
+	constructor(props){
+		super(props)
+		this.renderTodoCount = this.renderTodoCount.bind(this);
+		this.renderFilterLink = this.renderFilterLink.bind(this);
+		this.renderClearButton = this.renderClearButton.bind(this);
+	}
 	renderTodoCount(){
 		const {activeCount} = this.props;
 		const itemWord = activeCount === 1 ? 'item' : 'items';
-
+		
+		
 		return (
-			<span>
+			<span className="todo-count">
 				<strong>{activeCount || 'No'}</strong>{itemWord} left
 			</span>
 		);
@@ -27,7 +33,7 @@ export default class Footer extends Component {
 		const {filter:selectedFilter,onShow} = this.props;
 
 		return (
-			<a className = {classnames({selected:filter === selected:filter})} style={{cursor:'point'}} onClick={()=>onShow(filter)}>
+			<a className = {classnames({selected:filter === selectedFilter})} style={{cursor:'point'}} onClick={()=>onShow(filter)}>
 				{title}
 			</a>
 		)
@@ -47,7 +53,7 @@ export default class Footer extends Component {
 	render(){
 		return (
 			<footer className = "footer">
-				{this.renderTodoCount}
+				{this.renderTodoCount()}
 				<ul className = "filters">
 					{[SHOW_ALL,SHOW_ACTIVE,SHOW_COMPLETED].map(filter => 
 						<li key={filter}>
