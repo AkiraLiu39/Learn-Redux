@@ -9,7 +9,6 @@ const initialState = [
 
 export default function todos(state = initialState,action){
 	const acionType = action.type;
-	console.log('action',action,'state',state);
 	if (ADD_TODO == acionType) {
 		let result = [
 			{

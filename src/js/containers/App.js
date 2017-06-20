@@ -22,7 +22,6 @@ App.PropTypes = {
 const mapStateToProps = state => ({
 	todos:state.todos
 });
-console.log(TodoAction);
 const mapDispatchToProps = dispatch => ({
 	actions:bindActionCreators(TodoAction,dispatch)
 });
