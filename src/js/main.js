@@ -61,7 +61,7 @@ let store = createStore(todoApp,applyMiddleware(thunkMiddleware,logger));
 // 				})
 // 				.then(text=>dispatch(receivePosts('yoyoyo',text)));
 // 	}
-}
+// }
 // store.dispatch(fetchPosts());
 render(
 	<Provider store = {store}>
